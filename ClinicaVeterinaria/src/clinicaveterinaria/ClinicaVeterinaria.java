@@ -47,7 +47,16 @@ public class ClinicaVeterinaria {
         
         //Men�
         do {
-        	extracted();
+        	System.out.println("=====================================================");
+            System.out.println("�Qu� quieres hacer?");
+            System.out.println("1. A�adir un nuevo cliente");
+            System.out.println("2. A�adir una nueva mascota para un cliente existente");
+            System.out.println("3. Mostrar todos los due�os");
+            System.out.println("4. Mostrar todas las mascotas");
+            System.out.println("5. Guardar la informaci�n de mascotas en ficheros");
+            System.out.println("6. Guardar la informaci�n de clientes en ficheros");            
+            System.out.println("7. Salir");
+            System.out.println("=====================================================");
             try {
                 numero = Integer.parseInt(teclado.readLine());
             } catch (IOException e) {
@@ -61,12 +70,12 @@ public class ClinicaVeterinaria {
 			switch (numero) {
                 case 1:
                     //CLIENTE NUEVO
-				altaCliente(teclado, clientes, nomCliente);
+				altaCliente(teclado, clientes, nomCliente, "prueba");
                     break;
 
                 case 2:
                     //CLIENTE EXISTENTE, PRIMERO LO HABREMOS LISTADO CON LA OPCI�N 3
-				extracted(teclado, listaMascotas, clientes, nomCliente);
+				altaMascota(teclado, listaMascotas, clientes, nomCliente);
                     break;
 
                 case 3:
@@ -91,8 +100,8 @@ public class ClinicaVeterinaria {
 
     }
 
-	private static void extracted(BufferedReader teclado, ArrayList<Mascota> listaMascotas, ArrayList<Persona> clientes,
-			String nomCliente) throws IOException {
+	private static void altaMascota(BufferedReader teclado, ArrayList<Mascota> listaMascotas,
+			ArrayList<Persona> clientes, String nomCliente) throws IOException {
 		System.out.println("INTRODUCIMOS EL CLIENTE");
 		System.out.println("Introduce el n�mero de cliente");
 		int indice = 0;
@@ -184,7 +193,7 @@ public class ClinicaVeterinaria {
 		listaMascotas.add(m1);
 	}
 
-	private static void altaCliente(BufferedReader teclado, ArrayList<Persona> clientes, String nomCliente)
+	private static int altaCliente(BufferedReader teclado, ArrayList<Persona> clientes, String nomCliente, String texto)
 			throws IOException {
 		System.out.println("INTRODUCIMOS EL CLIENTE");
 		System.out.println(nomCliente);
@@ -199,23 +208,11 @@ public class ClinicaVeterinaria {
 		    edad = Integer.parseInt(teclado.readLine());
 		} catch (Exception e) {
 		    System.err.println(EXCEPCIONENTERO);
-		    return;
+		    return 0;
 		}
 		Persona p1 = new Persona(nombre, apellidos, dni, edad);
 		clientes.add(p1);
-	}
-
-	private static void extracted() {
-		System.out.println("=====================================================");
-		System.out.println("�Qu� quieres hacer?");
-		System.out.println("1. A�adir un nuevo cliente");
-		System.out.println("2. A�adir una nueva mascota para un cliente existente");
-		System.out.println("3. Mostrar todos los due�os");
-		System.out.println("4. Mostrar todas las mascotas");
-		System.out.println("5. Guardar la informaci�n de mascotas en ficheros");
-		System.out.println("6. Guardar la informaci�n de clientes en ficheros");            
-		System.out.println("7. Salir");
-		System.out.println("=====================================================");
+		return 0;
 	}
 
 }

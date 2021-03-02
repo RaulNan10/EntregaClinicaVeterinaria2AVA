@@ -24,6 +24,6 @@ public class Cosita extends Mascota {
         this.gradosalvaje = gradosalvaje;
     }
 
-    //MÉTODOS SETTER & GETTER - PARA HACER (P.E. UTILIZANDO LA REFACTORIZACIÓN DEL ATRIBUTO)
+    //Mï¿½TODOS SETTER & GETTER - PARA HACER (P.E. UTILIZANDO LA REFACTORIZACIï¿½N DEL ATRIBUTO)
 
 }
